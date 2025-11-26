@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Executive Chef 이민혁 - 모바일 명함</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <style>
+    :root {
+      --bg: #fff7ed;          /* 따뜻한 아이보리/피치 톤 배경 */
+      --card: #fffbeb;        /* 밝은 카드 배경 */
+      --accent: #ea580c;      /* 따뜻한 오렌지 포인트 컬러 */
+      --text-main: #1f2937;   /* 짙은 텍스트 */
+      --text-sub: #6b7280;    /* 서브 텍스트 */
+      --border-subtle: #fed7aa;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      margin: 0;
+      padding: 20px; /* 16px → 20px (약 20% 증가) */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(circle at top, #fed7aa 0, #fff7ed 40%, #fefce8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: var(--text-main);
+    }
+    .card {
+      width: 100%;
+      max-width: 504px; /* 420px → 504px (20% 증가) */
+      background: linear-gradient(145deg, rgba(255,251,235,0.98), rgba(255,247,237,0.98));
+      border-radius: 24px; /* 22px → 24px 살짝 확대 */
+      padding: 22px 22px 24px; /* 18→22, 20→24 */
+      box-shadow:
+        0 16px 40px rgba(248, 171, 108, 0.45),
+        0 0 0 1px rgba(254, 215, 170, 0.7);
+      border: 1px solid rgba(251, 191, 101, 0.9);
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 16px; /* 14px → 16px */
+    }
+    .avatar-wrap {
+      position: relative;
+      width: 98px;   /* 82px → 약 20% 증가 */
+      height: 98px;  /* 82px → 약 20% 증가 */
+      border-radius: 50%;
+      padding: 3px;  /* 2px → 3px */
+      background: conic-gradient(from 220deg, #fed7aa, #fb923c, #fbbf24, #fed7aa);
+      flex-shrink: 0;
+    }
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #fff7ed;
+      overflow: hidden;
+    }
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .name-block {
+      flex: 1;
+      min-width: 0;
+    }
+    .name {
+      font-size: 24px; /* 20px → 24px */
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px; /* 4px → 6px */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .title {
+      font-size: 15px; /* 13px → 15px */
+      color: var(--text-sub);
+    }
+    .title span.highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .divider {
+      margin: 14px 0 12px; /* 12/10 → 14/12 */
+      border-bottom: 1px solid rgba(248, 191, 108, 0.8);
+    }
+    .section-label {
+      font-size: 12px; /* 11px → 12px */
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 8px; /* 6px → 8px */
+    }
+    .history-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      font-size: 15px; /* 13px → 15px */
+      color: #374151;
+    }
+    .history-list li {
+      display: flex;
+      gap: 8px;        /* 6px → 8px */
+      margin-bottom: 8px; /* 6px → 8px */
+      line-height: 1.5;
+    }
+    .history-bullet {
+      color: var(--accent);
+      font-size: 12px; /* 11px → 12px */
+      margin-top: 4px; /* 3px → 4px */
+    }
+    .history-text {
+      flex: 1;
+    }
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;  /* 8px → 10px */
+      margin-top: 10px; /* 8px → 10px */
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;  /* 6px → 8px */
+      width: 100%;
+      padding: 12px 14px; /* 10→12, 12→14 */
+      border-radius: 999px;
+      font-size: 15px; /* 13px → 15px */
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, rgba(254, 243, 199, 0.9), rgba(255, 237, 213, 1));
+    }
+    .btn span.icon {
+      font-size: 17px; /* 15px → 17px */
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, #fdba74, #f97316);
+      color: #111827;
+      border-color: transparent;
+      box-shadow: 0 8px 18px rgba(248, 171, 108, 0.55);
+    }
+    .btn.primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 10px rgba(248, 171, 108, 0.4);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+    .footer {
+      margin-top: 16px; /* 14px → 16px */
+      text-align: center;
+      font-size: 11px; /* 10px → 11px */
+      color: var(--text-sub);
+    }
+    @media (max-width: 360px) {
+      body {
+        padding: 12px; /* 10px → 12px */
+      }
+      .card {
+        padding: 18px 18px 20px; /* 비율 유지하며 살짝 확대 */
+      }
+      .name {
+        font-size: 22px; /* 18px → 22px */
+      }
+      .title {
+        font-size: 14px; /* 12px → 14px */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="avatar-wrap">
+        <div class="avatar-inner">
+          <img src="KakaoTalk_20251123_220352516_01.jpg" alt="Executive Chef 이민혁 프로필 사진">
+        </div>
+      </div>
+      <div class="name-block">
+        <div class="name">이민혁</div>
+        <div class="title"><span class="highlight">Executive Chef Lee Min-Hyuk</span></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-label">Profile</div>
+      <ul class="history-list">
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">제주한라대학교 호텔조리과 졸업</div>
+        </li>
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">일본 조리 기능사 자격증 보유</div>
+        </li>
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">제17대 청와대 셰프 김진수 스승의 수제자</div>
+        </li>
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">롯데호텔 · 리베라호텔 근무</div>
+        </li>
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">크라운 플라자 호텔 & 카지노 (리츠칼튼 호텔 계열)</div>
+        </li>
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">제주국제공항 일식당 근무</div>
+        </li>
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">현) 미국 워싱턴 D.C. Onggi 한정식 총괄 쉐프</div>
+        </li>
+        <li>
+          <div class="history-bullet">•</div>
+          <div class="history-text">일식 · 이탈리안 · 아메리칸 · 한식 조리 다년간 경험</div>
+        </li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-label">Contact</div>
+      <div class="contact-row">
+        <a class="btn primary" href="tel:+821083325000">
+          <span class="icon">📞</span>
+          <span>전화 걸기 · +82-10-8332-5000</span>
+        </a>
+        <a class="btn" href="mailto:minhyukchef@gmail.com">
+          <span class="icon">✉️</span>
+          <span>이메일 보내기 · minhyukchef@gmail.com</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer">
+      © Executive Chef 이민혁 · Digital Business Card
+    </div>
+  </div>
+</body>
+</html>
